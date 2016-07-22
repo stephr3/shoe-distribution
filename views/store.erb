@@ -1,7 +1,19 @@
 <h1><%= @store.name() %></h1>
 <ul>
-  <li><strong>Address:</strong> <%= @store.address() %></li>
-  <li><strong>Phone:</strong> <%= @store.phone() %></li>
+  <li><strong>Address:</strong>
+    <% if @store.address().!=("\n, ") %>
+    <%= @store.address() %>
+    <% else %>
+    no address given
+    <% end %>
+  </li>
+  <li><strong>Phone:</strong>
+    <% if @store.phone().!=('') %>
+    <%= @store.phone() %>
+    <% else %>
+    no phone number given
+    <% end %>
+  </li>
 </ul>
 
 <ul>
