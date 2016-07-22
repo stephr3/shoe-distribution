@@ -69,4 +69,12 @@ describe('Update a brand path', {:type => :feature}) do
     click_button('Edit')
     expect(page).to have_content('Adidas')
   end
+
+  it('allows the user to delete a brand from the database') do
+    brand = Brand.create(:name => 'Nike')
+    visit('/brands')
+    click_link('Nike')
+    click_button('Delete Nike from Database')
+    expect(page).to have_no_content('Nike')
+  end
 end

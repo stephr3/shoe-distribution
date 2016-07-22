@@ -111,3 +111,9 @@ patch('/brands/:id') do
     erb(:brand_errors)
   end
 end
+
+delete('/brands/:id') do
+  @brand = Brand.find(params.fetch('id').to_i())
+  @brand.destroy()
+  redirect('/brands')
+end
