@@ -100,3 +100,14 @@ get('/brands/:id') do
   @brand = Brand.find(params.fetch('id').to_i())
   erb(:brand)
 end
+
+patch('/brands/:id') do
+  @brand = Brand.find(params.fetch('id').to_i())
+  name = params.fetch('name')
+  @brand.update({:name => name})
+  if @brand.save()
+    redirect back
+  else
+    erb(:brand_errors)
+  end
+end

@@ -11,4 +11,12 @@
   <p><strong>There are currently no brands assigned to this store.</strong></p>
   <br>
   <% end %>
+  <h3>Edit Brand Name:</h3>
+  <form action="/brands/<%= @brand.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="name" value="<%= @brand.name() %>">
+    </div>
+    <button type="submit" class="btn">Edit</button>
 </div>
