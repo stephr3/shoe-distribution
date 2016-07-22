@@ -21,7 +21,8 @@ post('/stores') do
   state = params[:state]
   phone = params[:phone]
   address = "#{street}\n#{city}, #{state}"
-  @store = Store.create({:name => name, :address => address, :phone => phone})
+  brand_ids = params[:brand_ids]
+  @store = Store.create({:name => name, :address => address, :phone => phone, :brand_ids => brand_ids})
   if @store.save()
     redirect('/stores/'.concat(@store.id().to_s()))
   else
