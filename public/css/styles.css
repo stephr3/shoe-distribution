@@ -36,6 +36,7 @@ ul {
 
 .btn:hover {
   background-color: #2F4550;
+  color: #f4f4f9;
 }
 
 .centered-ul {
@@ -50,11 +51,20 @@ ul {
 }
 
 .container {
-  margin: 50px 0;
+  margin: 50px;
 }
 
 .left {
   margin-left: 20px;
+}
+
+.main-content {
+  background-color: #f4f4f9;
+  border: solid 5px #586f7c;
+  border-radius: 5px;
+  max-width: 80%;
+  margin: 5% auto;
+  padding: 20px;
 }
 
 .round {

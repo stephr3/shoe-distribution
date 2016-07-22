@@ -1,46 +1,56 @@
-<h1>Add a New Store</h1>
-<form action="/stores" method="post">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name">
-  </div>
-  <div class="form-group">
-    <label for="street">Street:</label>
-    <input type="text" name="street" id="street">
-  </div>
-  <div class="form-group">
-    <label for="city">City:</label>
-    <input type="text" name="city" id="city">
-  </div>
-  <div class="form-group">
-    <label for="state">State:</label>
-    <input type="text" name="state" id="state">
-  </div>
-  <div class="form-group">
-    <label for="phone">Phone:</label>
-    <input type="tel" name="phone" id="phone">
-  </div>
-  <div class="form-group">
-    <label for="brand_ids[]">Select brands that this store carries:</label>
-    <% if @brands.any?() %>
-      <% @brands.each() do |brand| %>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
-        </label>
+<div class="row">
+  <h1>Add a New Store</h1>
+</div>
+<div class="row">
+  <div class="col-md-6 main-content">
+    <h3>Add store information here:</h3>
+    <form action="/stores" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
       </div>
-      <% end %>
-    <%else%>
-    <p>Please add a new brand below.</p>
-    <% end %>
+      <div class="form-group">
+        <label for="street">Street:</label>
+        <input type="text" name="street" id="street">
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city">
+      </div>
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" name="state" id="state">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" id="phone">
+      </div>
+      <div class="form-group">
+        <label for="brand_ids[]">Select brands that this store carries:</label>
+        <% if @brands.any?() %>
+        <% @brands.each() do |brand| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
+          </label>
+        </div>
+        <% end %>
+        <%else%>
+        <p>Please add a new brand below.</p>
+        <% end %>
+      </div>
+      <button type="submit" class="btn">Add Store</button>
+    </form>
   </div>
-  <button type="submit" class="btn">Add Store</button>
-</form>
-<h3>Don't see your brand? Add a new brand to checklist:</h3>
-<form action="/brands" method="post">
-  <div class="form-group">
-    <label for="brand_name">Brand Name:</label>
-    <input type="text" name="brand_name">
+  <div class="col-md-1"></div>
+  <div class="col-md-5 main-content">
+    <h3>Don't see your brand? Add a new brand to checklist before you start:</h3>
+    <form action="/brands" method="post">
+      <div class="form-group">
+        <label for="brand_name">Brand Name:</label>
+        <input type="text" name="brand_name">
+      </div>
+      <button type="submit" class="btn">Add Brand</button>
+    </form>
   </div>
-  <button type="submit" class="btn">Add Brand</button>
-</form>
+</div>
