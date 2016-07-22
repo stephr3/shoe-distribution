@@ -19,3 +19,16 @@ describe('Add a brand to a store path', {:type => :feature}) do
     expect(page).to have_content('Nike')
   end
 end
+
+describe('Add a brand when updating a store path', {:type => :feature}) do
+  it('allows the user to add a brand when updating store information') do
+    Store.create(:name => 'Shiekh')
+    Brand.create(:name => 'Nike')
+    visit('/stores')
+    click_link('Shiekh')
+    click_link('Update Store Information')
+    check('Nike')
+    click_button('Update')
+    expect(page).to have_content('Nike')
+  end
+end

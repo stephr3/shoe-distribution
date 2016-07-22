@@ -20,6 +20,29 @@
     <label for="phone">Phone:</label>
     <input type="tel" name="phone" value="<%= @store.phone() %>">
   </div>
+  <label>Current Brands:</label>
+  <% if @store.brands.any? %>
+  <ul>
+    <% @store.brands.each() do |brand| %>
+    <li><%= brand.name() %></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p><strong>There are currently no brands assigned to this store.</strong></p>
+  <br>
+  <% end %>
+  <ul>
+  <div class="form-group">
+    <% if @brands.any?() %>
+    <% @brands.each() do |brand| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.name() %>
+      </label>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
   <button type="submit" class="btn">Update</button>
 </form>
 <h3>Delete <%= @store.name() %> from Database:</h3>

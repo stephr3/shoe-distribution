@@ -42,6 +42,7 @@ end
 
 get('/stores/:id/edit') do
   @store = Store.find(params.fetch('id').to_i())
+  @brands = Brand.all() - @store.brands()
   erb(:store_edit)
 end
 
@@ -50,7 +51,17 @@ patch('/stores/:id') do
   name = params.fetch('name')
   address = params[:address]
   phone = params[:phone]
-  @store.update({:name => name, :address => address, :phone => phone})
+  new_brand_ids = params[:brand_ids]
+  all_brand_ids = []
+  @store.brands.each() do |brand|
+    all_brand_ids.push(brand.id())
+  end
+  if new_brand_ids
+    new_brand_ids.each() do |id|
+      all_brand_ids.push(id)
+    end    
+  end
+  @store.update({:name => name, :address => address, :phone => phone, :brand_ids => all_brand_ids})
   if @store.save()
     redirect('/stores/'.concat(@store.id().to_s()))
   else
