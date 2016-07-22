@@ -19,3 +19,15 @@ describe('Add a store path', {:type => :feature}) do
     expect(page).to have_content('Shiekh')
   end
 end
+
+describe('Update a store path', {:type => :feature}) do
+  it('allows users to update store information') do
+    Store.create({:name => 'Shiekh'})
+    visit('/stores')
+    click_link('Shiekh')
+    click_link('Update Store Information')
+    fill_in('name', :with => 'Shiekh Shoes')
+    click_button('Update')
+    expect(page).to have_content('Shiekh Shoes')
+  end
+end

@@ -37,3 +37,21 @@ get('/stores') do
   @stores = Store.all()
   erb(:stores)
 end
+
+get('/stores/:id/edit') do
+  @store = Store.find(params.fetch('id').to_i())
+  erb(:store_edit)
+end
+
+patch('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i())
+  name = params.fetch('name')
+  address = params[:address]
+  phone = params[:phone]
+  @store.update({:name => name, :address => address, :phone => phone})
+  if @store.save()
+    redirect('/stores/'.concat(@store.id().to_s()))
+  else
+    erb(:errors)
+  end
+end

@@ -1,0 +1,24 @@
+<h1>Update <%=@store.name()%> Information</h1>
+<form action="/stores/<%= @store.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= @store.name() %>">
+  </div>
+  <% if @store.address().==("\n, ") %>
+  <div class="form-group">
+    <label for="address">Address:</label>
+    <textarea rows='3' name="address"></textarea>
+  </div>
+  <% else %>
+  <div class="form-group">
+    <label for="address">Address:</label>
+    <textarea rows='3' name="address"><%= @store.address() %></textarea>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" name="phone" value="<%= @store.phone() %>">
+  </div>
+  <button type="submit" class="btn">Update</button>
+</form>
