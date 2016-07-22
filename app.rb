@@ -55,3 +55,9 @@ patch('/stores/:id') do
     erb(:errors)
   end
 end
+
+delete('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i())
+  @store.destroy()
+  redirect('/stores')
+end

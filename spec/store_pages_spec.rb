@@ -30,4 +30,12 @@ describe('Update a store path', {:type => :feature}) do
     click_button('Update')
     expect(page).to have_content('Shiekh Shoes')
   end
+  it('allows users to delete a store from the database') do
+    Store.create({:name => 'Shiekh'})
+    visit('/stores')
+    click_link('Shiekh')
+    click_link('Update Store Information')
+    click_button('Delete Store')
+    expect(page).to have_no_content('Shiekh')
+  end
 end

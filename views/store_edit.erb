@@ -22,3 +22,8 @@
   </div>
   <button type="submit" class="btn">Update</button>
 </form>
+<h3>Delete <%= @store.name() %> from Database:</h3>
+<form action="/stores/<%= @store.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn">Delete Store</button>
+</form>

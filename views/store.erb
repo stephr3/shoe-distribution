@@ -1,7 +1,7 @@
 <h1><%= @store.name() %></h1>
 <ul>
   <li><strong>Address:</strong>
-    <% if @store.address().!=("\n, ") %>
+    <% if @store.address().!=("\n, ").&(@store.address().!=('')) %>
     <%= @store.address() %>
     <% else %>
     no address given
