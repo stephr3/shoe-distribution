@@ -48,7 +48,7 @@ ul {
   display:block;
   font-size: 1.5em;
   margin: 0 auto 20px;
-  max-width: 50%;
+  max-width: 600px;
   padding: 5px;
 }
 
@@ -71,4 +71,9 @@ ul {
 
 .round {
   border-radius: 50%;
+}
+
+#stores {
+  font-size: 1.3em;
+  max-width: 600px;
 }

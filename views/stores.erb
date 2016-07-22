@@ -1,14 +1,16 @@
 <h1>Stores</h1>
-<% if @stores == [] %>
-<p>There are no stores saved in the database yet.</p>
-<% else %>
-<ul>
-  <% @stores.each() do |store| %>
-  <li><a href='/stores/<%= store.id() %>'><%= store.name() %></a></li>
+<div class="main-content" id="stores">
+  <% if @stores == [] %>
+  <p>There are no stores saved in the database yet.</p>
+  <% else %>
+  <ul>
+    <% @stores.each() do |store| %>
+    <li><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>  <a href='/stores/<%= store.id() %>'><%= store.name() %></a></li>
+    <% end %>
+  </ul>
   <% end %>
-</ul>
-<% end %>
-<ul>
-  <li><a href='/stores/new'>Add a New Store</a></li>
-  <li><a href='/'>Home</a></li>
-</ul>
+</div>
+<div class="text-center">
+  <button class="btn"><a href='/stores/new'>Add a New Store</a></button>
+  <button class="btn"><a href='/'>Home</a></button>
+</div>
