@@ -12,4 +12,10 @@ describe('Add a store path', {:type => :feature}) do
     click_button('Add Store')
     expect(page).to have_content('Johnny Sole')
   end
+
+  it('allows users to view a list of stores') do
+    Store.create({:name => 'Shiekh'})
+    visit('/stores')
+    expect(page).to have_content('Shiekh')
+  end
 end
