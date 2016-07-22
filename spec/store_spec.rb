@@ -9,7 +9,12 @@ describe(Store) do
     store = Store.new({:name => 'Shiekh', :phone => '1'.*(14)})
     expect(store.save()).to(eq(false))
   end
-  describe('Store#titlecase_name') do  
+  it('belongs to a brand') do
+    brand = Brand.create({:name => 'Nike'})
+    store = brand.stores().new({:name => 'Shiekh'})
+    expect(brand.stores()).to(eq([store]))
+  end
+  describe('Store#titlecase_name') do
     it('converts the name to title case') do
       store = Store.create({:name => 'johnny sole'})
       expect(store.name()).to(eq('Johnny Sole'))
