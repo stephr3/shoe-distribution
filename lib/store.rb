@@ -1,6 +1,6 @@
 class Store < ActiveRecord::Base
   validates(:name, :presence => true)
-  validates(:phone, :length => { :maximum => 12 })
+  validates(:phone, :length => { :maximum => 13 })
   before_save(:titlecase_name)
 
 private
