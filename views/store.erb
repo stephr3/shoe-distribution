@@ -20,7 +20,7 @@
   <h5><strong>Brands</strong></h5>
   <ul>
     <% @store.brands.each() do |brand| %>
-    <li><%= brand.name() %></li>
+    <li><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>  <%= brand.name() %></li>
     <% end %>
   </ul>
   <% else %>

@@ -41,6 +41,14 @@ ul {
   color: #f4f4f9;
 }
 
+.btn-danger {
+  background-color: #fb5151;
+}
+
+.btn-danger:hover {
+  background-color: #ff3333;
+}
+
 .centered-ul {
   background-color: #f4f4f9;
   border: solid 5px #586f7c;

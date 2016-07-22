@@ -1,66 +1,65 @@
 <h1>Update <%=@store.name()%> Information</h1>
-<form action="/stores/<%= @store.id() %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" name="name" value="<%= @store.name() %>">
-  </div>
-  <% if @store.address().==("\n, ") %>
-  <div class="form-group">
-    <label for="address">Address:</label>
-    <textarea rows='3' name="address"></textarea>
-  </div>
-  <% else %>
-  <div class="form-group">
-    <label for="address">Address:</label>
-    <textarea rows='3' name="address"><%= @store.address() %></textarea>
-  </div>
-  <% end %>
-  <div class="form-group">
-    <label for="phone">Phone:</label>
-    <input type="tel" name="phone" value="<%= @store.phone() %>">
-  </div>
-  <label>Current Brands:</label>
-  <% if @store.brands.any? %>
-  <ul>
-    <% @store.brands.each() do |brand| %>
-    <li><%= brand.name() %></li>
-    <% end %>
-  </ul>
-  <% else %>
-  <p><strong>There are currently no brands assigned to this store.</strong></p>
-  <br>
-  <% end %>
-  <div class="form-group">
-    <% if @brands.any?() %>
-    <label>Add More Brands to <%= @store.name() %>:</label>
-    <% @brands.each() do |brand| %>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.name() %>
-      </label>
+<div class="main-content">
+  <form action="/stores/<%= @store.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="name" value="<%= @store.name() %>">
     </div>
-    <% end %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <% if @store.brands().any?() %>
-    <label>Remove Brands from <%= @store.name() %></label>
-    <% @store.brands().each() do |brand| %>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="remove_brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
-      </label>
+    <% if @store.address().==("\n, ") %>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea rows='3' name="address"></textarea>
     </div>
-    <% end %>
     <% else %>
-    <p>There are no more brands to add to <%= @store.name() %>
+    <div class="form-group">
+      <label for="address" style="vertical-align:top">Address:</label>
+      <textarea rows='3' name="address" id="address"><%= @store.address() %></textarea>
+    </div>
     <% end %>
-  </div>
-  <button type="submit" class="btn">Update</button>
-</form>
-<h3>Delete <%= @store.name() %> from Database:</h3>
-<form action="/stores/<%= @store.id() %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button type="submit" class="btn">Delete Store</button>
-</form>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" name="phone" value="<%= @store.phone() %>">
+    </div>
+    <label>Current Brands:</label>
+    <% if @store.brands.any? %>
+    <ul>
+      <% @store.brands.each() do |brand| %>
+      <li><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>  <%= brand.name() %></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p><strong>There are currently no brands assigned to this store.</strong></p>
+    <br>
+    <% end %>
+    <div class="form-group">
+      <% if @brands.any?() %>
+      <label>Add More Brands to <%= @store.name() %>:</label>
+      <% @brands.each() do |brand| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.name() %>
+        </label>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <% if @store.brands().any?() %>
+      <label>Remove Brands from <%= @store.name() %></label>
+      <% @store.brands().each() do |brand| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="remove_brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
+        </label>
+      </div>
+      <% end %>
+      <% end %>
+      </div>
+      <button type="submit" class="btn">Update</button>
+    </form>
+    <form action="/stores/<%= @store.id() %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-danger">Delete <%= @store.name() %> from Database</button>
+    </form>
+</div>
