@@ -1,0 +1,14 @@
+<h1><%= @brand.name() %></h1>
+<div class="main-content">
+  <h3>Stores that carry <%= @brand.name() %>:</h3>
+  <% if @brand.stores.any? %>
+  <ul>
+    <% @brand.stores.each() do |store| %>
+    <li><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>  <a href='/stores/<%= store.id() %>'><%= store.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p><strong>There are currently no brands assigned to this store.</strong></p>
+  <br>
+  <% end %>
+</div>

@@ -50,3 +50,13 @@ describe('Deal with brands when updating a store path', {:type => :feature}) do
     expect(page).to have_no_content('Nike')
   end
 end
+
+describe('Update a brand path', {:type => :feature}) do
+  it('allows the user to view a brand page with store names') do
+    store = Store.create(:name => 'Shiekh')
+    store.brands().create(:name => 'Nike')
+    visit('/brands')
+    click_link('Nike')
+    expect(page).to have_content('Nike')
+  end
+end
