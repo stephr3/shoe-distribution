@@ -35,7 +35,7 @@ describe('Update a store path', {:type => :feature}) do
     visit('/stores')
     click_link('Shiekh')
     click_link('Update Store Information')
-    click_button('Delete Store')
+    click_button('Delete Shiekh from Database')
     expect(page).to have_no_content('Shiekh')
   end
 end

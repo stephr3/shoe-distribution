@@ -56,7 +56,7 @@ patch('/stores/:id') do
   if remove_brand_ids
     remove_brand_ids.each() do |id|
       @store.brands().destroy(Brand.find(id))
-    end     
+    end
   end
   all_brand_ids = []
   @store.brands.each() do |brand|
@@ -89,4 +89,9 @@ post('/brands') do
   else
     erb(:brand_errors)
   end
+end
+
+get('/brands') do
+  @brands = Brand.all()
+  erb(:brands)
 end
