@@ -1,8 +1,9 @@
-<h3>Oops! There were some errors:</h3>
-<ul>
-  <% @brand.errors().full_messages().each() do |message| %>
+<div class="main-content">
+  <h3>Oops! There were some errors:</h3>
+  <ul>
+    <% @brand.errors().full_messages().each() do |message| %>
     <li><%= message %></li>
-  <% end %>
-</ul>
-
-<h5><a href="/stores/new" >Try Again</a></h5>
+    <% end %>
+  </ul>
+  <h5><a href="/stores/new" >Try Again</a></h5>
+</div>
