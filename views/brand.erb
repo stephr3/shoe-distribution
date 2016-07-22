@@ -12,7 +12,7 @@
   <br>
   <% end %>
   <h3>Edit Brand Name:</h3>
-  <form action="/brands/<%= @brand.id() %>" method="post">
+  <form action="/brands/<%= @brand.id() %>" method="post" class="form-inline">
     <input type="hidden" name="_method" value="patch">
     <div class="form-group">
       <label for="name">Name:</label>
