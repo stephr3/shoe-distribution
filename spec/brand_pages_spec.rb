@@ -28,7 +28,7 @@ describe('Add a brand to a store path', {:type => :feature}) do
   end
 end
 
-describe('Add a brand when updating a store path', {:type => :feature}) do
+describe('Deal with brands when updating a store path', {:type => :feature}) do
   it('allows the user to add a brand when updating store information') do
     Store.create(:name => 'Shiekh')
     Brand.create(:name => 'Nike')
@@ -38,5 +38,15 @@ describe('Add a brand when updating a store path', {:type => :feature}) do
     check('Nike')
     click_button('Update')
     expect(page).to have_content('Nike')
+  end
+  it('allows the user to remove a brand when updating store information') do
+    store = Store.create(:name => 'Shiekh')
+    store.brands().create(:name => 'Nike')
+    visit('/stores')
+    click_link('Shiekh')
+    click_link('Update Store Information')
+    check('Nike')
+    click_button('Update')
+    expect(page).to have_no_content('Nike')
   end
 end

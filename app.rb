@@ -52,6 +52,12 @@ patch('/stores/:id') do
   address = params[:address]
   phone = params[:phone]
   new_brand_ids = params[:brand_ids]
+  remove_brand_ids = params[:remove_brand_ids]
+  if remove_brand_ids
+    remove_brand_ids.each() do |id|
+      @store.brands().destroy(Brand.find(id))
+    end     
+  end
   all_brand_ids = []
   @store.brands.each() do |brand|
     all_brand_ids.push(brand.id())
@@ -59,7 +65,7 @@ patch('/stores/:id') do
   if new_brand_ids
     new_brand_ids.each() do |id|
       all_brand_ids.push(id)
-    end    
+    end
   end
   @store.update({:name => name, :address => address, :phone => phone, :brand_ids => all_brand_ids})
   if @store.save()
