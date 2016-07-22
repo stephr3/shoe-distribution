@@ -10,12 +10,20 @@ describe('Add a brand path', {:type => :feature}) do
 end
 
 describe('Add a brand to a store path', {:type => :feature}) do
-  it('allows the users to add brands to a store') do
+  it('allows the user to add brands to a store') do
     Brand.create({:name => 'Nike'})
     visit('/stores/new')
     fill_in('name', :with => 'Shiekh')
     check('Nike')
     click_button('Add Store')
+    expect(page).to have_content('Nike')
+  end
+
+  it('allows the user to view all brands that a store carries') do
+    store = Store.create({:name => 'Shiekh'})
+    store.brands().create({:name => 'Nike'})
+    visit('/stores')
+    click_link('Shiekh')
     expect(page).to have_content('Nike')
   end
 end
