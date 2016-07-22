@@ -1,22 +1,23 @@
 <h1><%= @store.name() %></h1>
-<ul>
-  <li><strong>Address:</strong>
-    <% if @store.address().!=("\n, ").&(@store.address().!=('')) %>
-    <%= @store.address() %>
-    <% else %>
-    no address given
-    <% end %>
-  </li>
-  <li><strong>Phone:</strong>
-    <% if @store.phone().!=('') %>
-    <%= @store.phone() %>
-    <% else %>
-    no phone number given
-    <% end %>
-  </li>
-</ul>
-<% if @store.brands.any? %>
-  <h3>Brands Available at <%= @store.name() %>:</h3>
+<div class="main-content">
+  <ul>
+    <li><strong>Address:</strong>
+      <% if @store.address().!=("\n, ").&(@store.address().!=('')) %>
+      <%= @store.address() %>
+      <% else %>
+      no address given
+      <% end %>
+    </li>
+    <li><strong>Phone:</strong>
+      <% if @store.phone().!=('') %>
+      <%= @store.phone() %>
+      <% else %>
+      no phone number given
+      <% end %>
+    </li>
+  </ul>
+  <% if @store.brands.any? %>
+  <h5><strong>Brands</strong></h5>
   <ul>
     <% @store.brands.each() do |brand| %>
     <li><%= brand.name() %></li>
@@ -26,8 +27,9 @@
   <p><strong>There are currently no brands assigned to this store.</strong></p>
   <br>
   <% end %>
-<ul>
-  <li><a href='/stores/<%= @store.id() %>/edit'>Update Store Information</a></li>
-  <li><a href='/stores'>Back to Stores</a></li>
-  <li><a href='/stores/new'>Add a New Store</a></li>
-</ul>
+</div>
+<div class="text-center">
+  <button class="btn"><a href='/stores/<%= @store.id() %>/edit'>Update Store Information</a></button>
+  <button class="btn"><a href='/stores'>Back to Stores</a></button>
+  <button class="btn"><a href='/stores/new'>Add a New Store</a></button>
+</div>
