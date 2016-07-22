@@ -10,6 +10,7 @@ get('/') do
 end
 
 get('/stores/new') do
+  @brands = Brand.all()
   erb(:store_form)
 end
 
@@ -24,7 +25,7 @@ post('/stores') do
   if @store.save()
     redirect('/stores/'.concat(@store.id().to_s()))
   else
-    erb(:errors)
+    erb(:store_errors)
   end
 end
 
@@ -52,7 +53,7 @@ patch('/stores/:id') do
   if @store.save()
     redirect('/stores/'.concat(@store.id().to_s()))
   else
-    erb(:errors)
+    erb(:store_errors)
   end
 end
 
@@ -60,4 +61,14 @@ delete('/stores/:id') do
   @store = Store.find(params.fetch('id').to_i())
   @store.destroy()
   redirect('/stores')
+end
+
+post('/brands') do
+  name = params.fetch('brand_name')
+  @brand = Brand.create({:name => name})
+  if @brand.save()
+    redirect back
+  else
+    erb(:brand_errors)
+  end
 end
