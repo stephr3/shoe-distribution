@@ -9,4 +9,8 @@ describe(Store) do
     store = Store.new({:name => 'Shiekh', :phone => '1'.*(13)})
     expect(store.save()).to(eq(false))
   end
+  it('converts the name to title case') do
+    store = Store.create({:name => 'johnny sole'})
+    expect(store.name()).to(eq('Johnny Sole'))
+  end
 end
